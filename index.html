@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahender Kamboz - Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #007bff;
+            --accent-color: #1ace29;
+        }
+
+        .navbar {
+            background-color: var(--primary-color) !important;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 350px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            position: fixed;
+            height: 100%;
+        }
+
+        .main-content {
+            margin-left: 350px;
+            flex: 1;
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-bar {
+            height: 25px;
+            background-color: #e9ecef;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 20px;
+            background-color: var(--secondary-color);
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .skill-percent {
+            position: absolute;
+            right: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .skill-name{
+            color: white;
+            font-weight: bold;
+            font-size: large;
+
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+        }
+
+        /* form style */
+
+        /* Form container */
+        .form-container {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Input fields */
+        .form-container input, 
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Submit button */
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Common style for all icons */
+        .icon-circle {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+            width: fit-content;
+            padding: 10px 15px;
+            background-color: #007bff; /* Primary color */
+            color: white;
+            border-radius: 50px; /* Rounded edges */
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Style for the icons */
+        .icon-circle i {
+            font-size: 20px;
+        }
+
+        /* Hover effect */
+        .icon-circle:hover {
+            background-color: #0056b3;
+        }
+
+        /* Wrapper for alignment */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .map-frame {
+        width: 100%;  /* Full width */
+        max-width: 1000px; /* Maximum width */
+        height: 400px; /* Set height */
+        border: 0; /* No border */
+        margin: 20px auto; /* Centering with margin */
+        padding: 10px; /* Add padding */
+        display: block; /* To apply margin auto */
+        filter: invert(100%); /* Invert colors */
+    }
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="static/images/image_3.jpeg" alt="Logo" width="120" >
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+                    
+
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mahendersingh059/" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/mahender111" class="text-white mx-2"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+
+                    <button class="btn btn-primary btn-lg" type="button"><a class="nav-link" href="static/myfile/mahender_resum_2025.pdf" download>Download Resume</a></button>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="text-center">
+                <img src='static/images/image_5.jpeg' class="profile-img rounded-circle mb-3" alt="Profile">
+                <h2>Mahender Kamboz</h2>
+                <p class="text-muted">Full Stack Developer</p>
+                
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> mahendersingh059@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9812284896</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Hisar, Haryana, INDIA</p>
+                </div>
+                <div class="row">
+                    <div class ='col-md-12'>
+                        <a href="https://www.linkedin.com/in/mahendersingh059/" class="text-black mx-2"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/mahender111" class="text-black mx-2"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/yourprofile" class="text-black mx-2" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:mahendersingh059@gamil.com" class="text-black mx-2"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.instagram.com/yourusername/" class="text-black mx-2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://hub.docker.com/repositories/mahender048" class="text-black mx-2"><i class="fab fa-docker"></i></a>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Section -->
+            <section id="home" class="section">
+                <h1 class="display-4">Welcome to My Portfolio</h1>
+                <p class="lead">Passionate developer with 2+ years of experience in web development</p>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h1>About Me</h1>
+                <p>After graduating in 2020 with a Master’s Degree in Computer Application, I spent the one year to learn Djnago. I want to code things from scratch, and revel in bringing ideas to existence within the browser</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="static/images/image_5.jpeg" alt="About Image" class="rounded" width="100%" height="500px">
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Web Designer & Web Developer.</h4>
+                        <p>MCA graduate specializing in Python/Django development with experience in building web applications and REST APIs. Proficient in Django, Docker, Git, and Python technologies.</p>
+                        <ul class="list-unstyled">
+                            <li><b>Birthday:</b> 10 April 1992</li>
+                            <li><b>Email:</b> mahendersingh059@gmail.com</li>
+                            <li><b>Phone:</b>  +919812284896</li>
+                            <li><b>City: </b>  Hisar, Haryana, INDIA</li>
+                            <li><strong>Degree:</strong> Master of Computer Applications</li>
+                            <li><strong>Freelance:</strong> Available</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+           
+
+            <!-- Skills Section -->
+            <section id="skills" class="section">
+                <h1>Technical Skills</h1>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%"><span class="skill-name">Django</span>
+                        <span class="skill-percent"> 90%</span>
+                    </div>
+                    
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%"><span class="skill-name">Python</span>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 75%"><span class="skill-name">Docker</span>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                    
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%"><span class="skill-name">HTML</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 75%"><span class="skill-name">CSS</span>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                    
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 70%"> <span class="skill-name">JavaScript</span>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"> <span class="skill-name">Bootstrap</span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- RESUME SECTIONS -->
+            <section id="resume" class="section">
+                <h1>Resume</h1>
+                <p>Intend to build a career with a leading corporate hi-tech environment with committed & dedicated people, which helps me explore myself and grow the organization.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Summary</h2>
+                        <ul>
+                            <h3>Mahender Kamboj</h3>
+                            <p>Innovative and deadline-driven Web Developer with experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</p>
+                            <li>VPO-Lohari Ragho, Tel-Narnaund, pincode-125039, Hisar, Haryana, INDIA</li>
+                            <li>Mahendersingh059@gmail.com</li>
+                            <li>+919812284896</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Professional Experience</h2>                 
+                        <ul>
+                            <h3>Full Stack Developer</h3>
+                            <li>Sanfinity Creative Solution Pvt. Ltd. , India</li>
+                            <li>April, 2023 - Present</li>
+                            <li>VADODARA, GUJARAT, INDIA</li>
+
+                        </ul>
+                        <ul>
+                            <h3>Python/Django Developer</h3>
+                            <li>Ezzies Technologies Pvt. Ltd. , India  </li>
+                            <li>May‘ 2021- Dec’ 2022</li>
+                            <li>NODIA-62, HARYANA, INDIA</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h1>Education History</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <ul class="list-unstyled">
+                                <li><h6>Master of Computer applications</h6></li>
+                                <li>2017-2020</li>
+                                <li>GURU JAMBHESHWAR UNIVERSITY OF SCIENCE & TECHNOLOGY HISSAR </li>
+                            </ul>
+                            <ul class="list-unstyled">
+                                <li><h6>Bachelor of Computer Application</h6></li>
+                                <li>2012 - 2017</li>
+                                <li> KURUKSHETRA UNIVERSITY, KURUKSHETRA</li>
+                            </ul>
+                        </ul>
+                    </div>
+            </section>
+
+            <section id="services" class="section">
+                <h1>Services</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Web Designing</h4>
+                        <p>Responsive websites built for an optimal user experience that achieves your business goals.</p>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Web Development</h4>
+                        <p>Make your website fast, easy to find, and reach the widest audience possible.   </p>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Website Management</h4>
+                        <p>Manage your website using the web's most popular content management system.</p>
+
+
+
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Experience Section -->
+            <section id="experience" class="section">
+                <h1>Experience</h1>
+                <h2>Project/Client: Enpay  / Enpay Transformer Components India Pvt. Ltd. (HQ-Vadodara, Gujarat, Turkey) </h2>
+                <ul>
+                    <h4>My Responsibilities:</h4>
+                    <li>Spearheaded the optimization of insulation calculation systems, slashing process time by 80% and boosting user productivity. </li>
+                    <li>Engineered advanced rate, weight, and cost estimation modules, enhancing cost prediction accuracy by 30%.</li>
+                    <li>Strengthened user authentication and secure file handling processes, elevating system security by 40%. </li>
+                    <li>Streamlined development workflows using class-based views, reducing development time by 20%.</li>
+                    <li>Led unit and integration tests, cutting error rates by 40% and enhancing platform stability.
+                    </li>
+                </ul>
+
+                <h2>Python/Django Developer/ Backend Development/Ezzies Technologies Pvt. Ltd. , India (May‘ 2021- Dec’ 2022)</h2>
+                <ul>
+                    <h4>My Responsibilities:</h4>
+                    <li>Designed and implemented core REST APIs for user authentication, menu management, and data synchronization, 
+                        reducing API response times by 25%. </li>
+                    <li>Optimized database queries, boosting platform performance and improving user interaction by 25%. 
+                    </li>
+                    <li>Architected scalable CRUD operations, managing over 100,000 records to ensure robust scalability. 
+                    </li>
+                    <li>Collaborated with cross-functional teams to resolve critical issues, improving platform stability by 15%. 
+                    </li>
+                    <li>Enhanced code quality and compliance with PEP-8 standards through rigorous codes  reviews. 
+                    </li>
+
+                </ul>
+            </section>
+                    
+                
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h1>Contact</h1>
+                <h3>Get in Touch</h3>
+                <p>I'm here to help if you're searching for a product designer to bring your idea to life or a design partner to help take your business to the next level. talk to me about a project collaboration or just say hi, on my Whatsapp : +91 9812284896</p>
+                                <!-- Contact Section -->
+                <div class="contact-info">
+                    <!-- Phone -->
+                    <a href="tel:+919812284896" class="icon-circle">
+                        <i class="fas fa-phone"></i> +91 98122 84896
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:mahendersingh059@gmail.com" class="icon-circle">
+                        <i class="fas fa-envelope"></i> mahendersingh059@gmail.com
+                    </a>
+
+                    <!-- Location -->
+                    <a href="https://www.google.com/maps?q=29.2627526,76.0536376&z=17&hl=en" class="icon-circle">
+                        <i class="fas fa-map-marker-alt"></i> Hisar Haryana, India
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3480.6666438163093!2d76.0536389!3d29.262749999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDE1JzQ1LjkiTiA3NsKwMDMnMTMuMSJF!5e0!3m2!1sen!2sin!4v1743458952826!5m2!1sen!2sin" 
+                        class="map-frame"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+                    const id = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
